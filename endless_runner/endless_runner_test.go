@@ -46,7 +46,7 @@ func countProcs(target string) int {
 // That that Run actually runs the given process
 func TestRun(t *testing.T) {
   // Run a meaningless process that never exits
-  procChan := Run("tail", "-f", "/dev/null")
+  procChan, _ := Run("tail", "-f", "/dev/null")
   // Get the process out of the communication channel
   process := <-procChan
   specificCount := countProcs(strconv.Itoa(process.Pid))
@@ -58,4 +58,17 @@ func TestRun(t *testing.T) {
     t.Error("Process not found")
   }
   process.Kill()
+}
+
+// See what happens when you pass an invalid command
+func TestFail(t *testing.T) {
+  procChan, errChan := Run("asdasfafsa", "asdasf")
+  select {
+  case <-procChan:
+    t.Error("Shouldn't have returned anything on the proc channel")
+  case err := <-errChan:
+    if err.Error() != "exec: \"asdasfafsa\": executable file not found in $PATH" {
+      t.Error("Returned error doesn't look right")
+    }
+  }
 }
