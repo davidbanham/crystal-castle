@@ -72,3 +72,20 @@ func TestFail(t *testing.T) {
     }
   }
 }
+
+// Ensure that a command is restarted when killed
+func TestDeath(t *testing.T) {
+  procChan, _ := Run("tail", "-f", "/dev/null")
+  process1 := <-procChan
+
+  cmd := exec.Command("kill", strconv.Itoa(process1.Pid))
+  cmd.Start()
+  cmd.Wait()
+
+  process2 := <-procChan
+  if process1.Pid == process2.Pid {
+    t.Error("Pids are not different")
+  }
+
+  process2.Kill()
+}
