@@ -46,7 +46,7 @@ func countProcs(target string) int {
 // That that Run actually runs the given process
 func TestRun(t *testing.T) {
   // Run a meaningless process that never exits
-  procChan, _ := Run("tail", "-f", "/dev/null")
+  procChan, _, stopChan := Run("tail", "-f", "/dev/null")
   // Get the process out of the communication channel
   process := <-procChan
   specificCount := countProcs(strconv.Itoa(process.Pid))
@@ -57,12 +57,12 @@ func TestRun(t *testing.T) {
   if (procErr != nil) {
     t.Error("Process not found")
   }
-  process.Kill()
+  stopChan <- true
 }
 
 // See what happens when you pass an invalid command
 func TestFail(t *testing.T) {
-  procChan, errChan := Run("asdasfafsa", "asdasf")
+  procChan, errChan, _ := Run("asdasfafsa", "asdasf")
   select {
   case <-procChan:
     t.Error("Shouldn't have returned anything on the proc channel")
@@ -75,7 +75,7 @@ func TestFail(t *testing.T) {
 
 // Ensure that a command is restarted when killed
 func TestDeath(t *testing.T) {
-  procChan, _ := Run("tail", "-f", "/dev/null")
+  procChan, _, stopChan := Run("tail", "-f", "/dev/null")
   process1 := <-procChan
 
   cmd := exec.Command("kill", strconv.Itoa(process1.Pid))
@@ -87,5 +87,17 @@ func TestDeath(t *testing.T) {
     t.Error("Pids are not different")
   }
 
-  process2.Kill()
+  stopChan <- true
+}
+
+// Test that sending a stop stops the command
+func TestKill(t *testing.T) {
+  procChan, _, stopChan := Run("tail", "-f", "/dev/null")
+  process := <-procChan
+
+  stopChan <- true
+
+  _ = <- stopChan
+
+  process.Wait()
 }
