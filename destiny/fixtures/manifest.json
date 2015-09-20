@@ -1,0 +1,212 @@
+{
+  "one": [
+    {
+      "job": "Threatening Oryx",
+      "hashAdjustment": 4
+    },
+    {
+      "job": "Upset Dove",
+      "hashAdjustment": 2
+    },
+    {
+      "job": "Slow Sheep",
+      "hashAdjustment": 4
+    },
+    {
+      "job": "Terrible Peafowl",
+      "hashAdjustment": 0
+    },
+    {
+      "job": "Utopian Squid",
+      "hashAdjustment": 3
+    },
+    {
+      "job": "Spotless Cheetah",
+      "hashAdjustment": 9
+    },
+    {
+      "job": "Tiny Rhinoceros",
+      "hashAdjustment": 1
+    },
+    {
+      "job": "Tasteful Bee",
+      "hashAdjustment": 0
+    },
+    {
+      "job": "Sharp Wolverine",
+      "hashAdjustment": 8
+    },
+    {
+      "job": "Therapeutic Herring",
+      "hashAdjustment": 17
+    }
+  ],
+  "two": [
+    {
+      "job": "Super Yak",
+      "hashAdjustment": 0
+    },
+    {
+      "job": "Thankful Chicken",
+      "hashAdjustment": 0
+    },
+    {
+      "job": "Wiggly Dugong",
+      "hashAdjustment": 9
+    },
+    {
+      "job": "Short Dogfish",
+      "hashAdjustment": 1
+    },
+    {
+      "job": "Symptomatic Pelican",
+      "hashAdjustment": 7
+    },
+    {
+      "job": "Temporary Jackal",
+      "hashAdjustment": 11
+    },
+    {
+      "job": "Tiresome Rabbit",
+      "hashAdjustment": 2
+    },
+    {
+      "job": "Tiresome Reindeer",
+      "hashAdjustment": 4
+    },
+    {
+      "job": "Wonderful Gaur",
+      "hashAdjustment": 6
+    },
+    {
+      "job": "Seemly Otter",
+      "hashAdjustment": 5
+    }
+  ],
+  "three": [
+    {
+      "job": "Statuesque Koala",
+      "hashAdjustment": 19
+    },
+    {
+      "job": "Shaggy Oyster",
+      "hashAdjustment": 3
+    },
+    {
+      "job": "Skinny Finch",
+      "hashAdjustment": 1
+    },
+    {
+      "job": "Wasteful Goose",
+      "hashAdjustment": 2
+    },
+    {
+      "job": "Spurious Hedgehog",
+      "hashAdjustment": 1
+    },
+    {
+      "job": "Shy Human",
+      "hashAdjustment": 7
+    },
+    {
+      "job": "Tasteful Goat",
+      "hashAdjustment": 6
+    },
+    {
+      "job": "Untidy Jay",
+      "hashAdjustment": 8
+    },
+    {
+      "job": "Wandering Oryx",
+      "hashAdjustment": 1
+    },
+    {
+      "job": "Unable Ape",
+      "hashAdjustment": 8
+    }
+  ],
+  "four": [
+    {
+      "job": "Sudden Dolphin",
+      "hashAdjustment": 8
+    },
+    {
+      "job": "Spicy Lark",
+      "hashAdjustment": 0
+    },
+    {
+      "job": "Threatening Deer",
+      "hashAdjustment": 1
+    },
+    {
+      "job": "Utopian Sheep",
+      "hashAdjustment": 5
+    },
+    {
+      "job": "Subsequent Pig",
+      "hashAdjustment": 3
+    },
+    {
+      "job": "Truculent Hyena",
+      "hashAdjustment": 1
+    },
+    {
+      "job": "Unique Ibis",
+      "hashAdjustment": 10
+    },
+    {
+      "job": "Smooth Marten",
+      "hashAdjustment": 1
+    },
+    {
+      "job": "Unbiased Ant",
+      "hashAdjustment": 3
+    },
+    {
+      "job": "Small Swallow",
+      "hashAdjustment": 13
+    }
+  ],
+  "five": [
+    {
+      "job": "Stormy Cobra",
+      "hashAdjustment": 0
+    },
+    {
+      "job": "Wiggly Swallow",
+      "hashAdjustment": 0
+    },
+    {
+      "job": "Tough Woodcock",
+      "hashAdjustment": 6
+    },
+    {
+      "job": "Terrific Echidna",
+      "hashAdjustment": 0
+    },
+    {
+      "job": "Soft Rhinoceros",
+      "hashAdjustment": 0
+    },
+    {
+      "job": "Skillful Mongoose",
+      "hashAdjustment": 1
+    },
+    {
+      "job": "Weary Otter",
+      "hashAdjustment": 4
+    },
+    {
+      "job": "Shallow Ape",
+      "hashAdjustment": 2
+    },
+    {
+      "job": "Wide-eyed Goshawk",
+      "hashAdjustment": 0
+    },
+    {
+      "job": "Scintillating Dogfish",
+      "hashAdjustment": 3
+    }
+  ]
+}

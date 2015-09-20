@@ -1,0 +1,37 @@
+[
+  {
+    "ip": {
+      "external": "127.0.0.1",
+      "internal": "127.0.0.1"
+    },
+    "hostname": "one"
+  },
+  {
+    "ip": {
+      "external": "127.0.0.1",
+      "internal": "127.0.0.1"
+    },
+    "hostname": "two"
+  },
+  {
+    "ip": {
+      "external": "127.0.0.1",
+      "internal": "127.0.0.1"
+    },
+    "hostname": "three"
+  },
+  {
+    "ip": {
+      "external": "127.0.0.1",
+      "internal": "127.0.0.1"
+    },
+    "hostname": "four"
+  },
+  {
+    "ip": {
+      "external": "127.0.0.1",
+      "internal": "127.0.0.1"
+    },
+    "hostname": "five"
+  }
+]
