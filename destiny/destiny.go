@@ -1,7 +1,6 @@
 package destiny
 
 import (
-	"fmt"
 )
 
 type Job struct {
@@ -45,7 +44,6 @@ func BuildPlan(jobs JobList, nodes NodeList) (plan Plan) {
 			i = 0
 		}
 	}
-	fmt.Println(plan)
 	return plan
 }
 
