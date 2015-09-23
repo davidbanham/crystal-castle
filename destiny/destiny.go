@@ -103,7 +103,7 @@ func findMatchingNode(job Job, nodes ReplicatedNodeList) (winningNode string) {
 	return winningNode
 }
 
-func HashValue(data string) (int) {
+func HashValue(data string) int {
 	sum := 0
 	for _, r := range []rune(data) {
 		sum += int(r)
@@ -133,9 +133,9 @@ func BuildReplicatedNodeList(nodes NodeList) (ret ReplicatedNodeList) {
 		i := num_replicas
 		for i > 0 {
 			newReplicant := Replicant{
-				Hostname: node.Hostname,
+				Hostname:       node.Hostname,
 				HashAdjustment: i,
-				Hash: hashString(node.Hostname + strconv.Itoa(i)),
+				Hash:           hashString(node.Hostname + strconv.Itoa(i)),
 			}
 			ret = append(ret, newReplicant)
 			i--
@@ -144,7 +144,7 @@ func BuildReplicatedNodeList(nodes NodeList) (ret ReplicatedNodeList) {
 	return ret
 }
 
-func hashString(in string) (string) {
+func hashString(in string) string {
 	hash := md5.Sum([]byte(in))
 	return fmt.Sprintf("%x", hash)
 }

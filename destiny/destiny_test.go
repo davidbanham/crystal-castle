@@ -84,7 +84,7 @@ func TestBuildPlan(t *testing.T) {
 func TestBuildReplicatedNodeList(t *testing.T) {
 	replicated := BuildReplicatedNodeList(nodes)
 	numReplicants := len(replicated)
-	if (numReplicants != TARGET_HASHES) {
+	if numReplicants != TARGET_HASHES {
 		t.Fail()
 	}
 }
@@ -99,18 +99,20 @@ func TestHashValue(t *testing.T) {
 	hash := "59bcc3ad6775562f845953cf01624225"
 	targetSum := 2059
 	result := HashValue(hash)
-	if (result != targetSum) { t.Fail() }
+	if result != targetSum {
+		t.Fail()
+	}
 }
 
 func TestAdjustJob(t *testing.T) {
 	testJob := Job{
-		Job: "Threatening Oryx",
+		Job:            "Threatening Oryx",
 		HashAdjustment: 0,
 	}
 	replicatedNodes := BuildReplicatedNodeList(nodes)
 	adjusted := adjustJob(testJob, "one", replicatedNodes)
 	target := Job{
-		Job: "Threatening Oryx",
+		Job:            "Threatening Oryx",
 		HashAdjustment: 4,
 	}
 	equal := reflect.DeepEqual(adjusted, target)
@@ -121,7 +123,7 @@ func TestAdjustJob(t *testing.T) {
 
 func BenchmarkAdjustJob(b *testing.B) {
 	testJob := Job{
-    Job: "Statuesque Koala",
+		Job:            "Statuesque Koala",
 		HashAdjustment: 0,
 	}
 	replicatedNodes := BuildReplicatedNodeList(nodes)
@@ -142,7 +144,7 @@ func TestAdjustJobs(t *testing.T) {
 func TestFindMatchingNode(t *testing.T) {
 	replicatedNodes := BuildReplicatedNodeList(nodes)
 	testJob := Job{
-		Job: "Threatening Oryx",
+		Job:            "Threatening Oryx",
 		HashAdjustment: 4,
 	}
 	winner := findMatchingNode(testJob, replicatedNodes)
@@ -154,7 +156,7 @@ func TestFindMatchingNode(t *testing.T) {
 func BenchmarkFindMatchingNode(b *testing.B) {
 	replicatedNodes := BuildReplicatedNodeList(nodes)
 	testJob := Job{
-		Job: "Threatening Oryx",
+		Job:            "Threatening Oryx",
 		HashAdjustment: 4,
 	}
 	b.ResetTimer()
