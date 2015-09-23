@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <style>
+      body {
+        margin: 0px;
+        padding: 0px;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="myCanvas" width="1200" height="800"></canvas>
+    <script>
+      fetch('angles.json').then(function(response) {
+        response.json().then(function(angles) {
+          fetch('jobAngles.json').then(function(response) {
+            response.json().then(function(jobAngles) {
+              var canvas = document.getElementById('myCanvas');
+              var context = canvas.getContext('2d');
+              var x = canvas.width / 2;
+              var y = canvas.height / 2;
+              var radius = 300;
+              angles.forEach(function(angle) {
+                angle = angle / 1000
+                console.log(angle)
+                var startAngle = angle
+                var endAngle = angle + 0.001
+                var counterClockwise = false;
+
+                context.beginPath();
+                context.arc(x, y, radius, startAngle, endAngle, counterClockwise);
+                context.lineWidth = 15;
+
+                context.strokeStyle = 'black';
+                context.stroke();
+              });
+
+              jobAngles.forEach(function(angle) {
+                angle = angle / 1000
+                console.log(angle)
+                var startAngle = angle
+                var endAngle = angle + 0.009
+                var counterClockwise = false;
+
+                context.beginPath();
+                context.arc(x, y, radius, startAngle, endAngle, counterClockwise);
+                context.lineWidth = 15;
+
+                context.strokeStyle = 'red';
+                context.stroke();
+              });
+            });
+          });
+
+        });
+      });
+    </script>
+  </body>
+</html>
