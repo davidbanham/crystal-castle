@@ -23,8 +23,8 @@ type Node struct {
 
 type Replicant struct {
 	Hostname       string `json:"hostname"`
-	HashAdjustment int    `json:"HashAdjustment"`
-	Hash           string `json:"Hash"`
+	HashAdjustment int    `json:"hashAdjustment"`
+	Hash           string `json:"hash"`
 }
 
 type Manifest map[string][]Job
