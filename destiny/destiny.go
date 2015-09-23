@@ -7,6 +7,8 @@ import (
 )
 
 const TARGET_HASHES = 2500
+const CIRCLE_SIZE = 360 * 1000
+const ANGLE_MULT_FACTOR = 1024
 
 type Job struct {
 	Job            string `json:"job"`
@@ -25,6 +27,7 @@ type Replicant struct {
 	Hostname       string `json:"hostname"`
 	HashAdjustment int    `json:"hashAdjustment"`
 	Hash           string `json:"hash"`
+	Angle          int    `json:"angle"`
 }
 
 type Manifest map[string][]Job
@@ -88,17 +91,24 @@ func adjustJob(job Job, target string, nodes ReplicatedNodeList) (ret Job) {
 }
 
 func findMatchingNode(job Job, nodes ReplicatedNodeList) (winningNode string) {
-	highest := 0
+	lowestDistance := CIRCLE_SIZE + 1
+	jobAngle := toAngle(HashValue(hashString(job.Job+strconv.Itoa(job.HashAdjustment))) * ANGLE_MULT_FACTOR)
 
 	for _, node := range nodes {
-		hash := hashString(node.Hash + job.Job + strconv.Itoa(job.HashAdjustment))
+		if node.Angle == jobAngle {
+			return node.Hostname
+		}
+		distance := node.Angle - jobAngle
 
-		sum := HashValue(hash)
+		if distance < 0 {
+			continue
+		}
 
-		if sum > highest {
-			highest = sum
+		if distance < lowestDistance {
+			lowestDistance = distance
 			winningNode = node.Hostname
 		}
+
 	}
 	return winningNode
 }
@@ -132,16 +142,26 @@ func BuildReplicatedNodeList(nodes NodeList) (ret ReplicatedNodeList) {
 
 		i := num_replicas
 		for i > 0 {
+			hash := hashString(node.Hostname + strconv.Itoa(i))
 			newReplicant := Replicant{
 				Hostname:       node.Hostname,
 				HashAdjustment: i,
-				Hash:           hashString(node.Hostname + strconv.Itoa(i)),
+				Hash:           hash,
+				Angle:          toAngle(HashValue(hash) * ANGLE_MULT_FACTOR),
 			}
 			ret = append(ret, newReplicant)
 			i--
 		}
 	}
 	return ret
+}
+
+func toAngle(num int) int {
+	if num < CIRCLE_SIZE {
+		return num
+	}
+	num = num - CIRCLE_SIZE
+	return toAngle(num)
 }
 
 func hashString(in string) string {

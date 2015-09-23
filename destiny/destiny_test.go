@@ -107,13 +107,13 @@ func TestHashValue(t *testing.T) {
 func TestAdjustJob(t *testing.T) {
 	testJob := Job{
 		Job:            "Threatening Oryx",
-		HashAdjustment: 0,
+		HashAdjustment: 1,
 	}
 	replicatedNodes := BuildReplicatedNodeList(nodes)
 	adjusted := adjustJob(testJob, "one", replicatedNodes)
 	target := Job{
 		Job:            "Threatening Oryx",
-		HashAdjustment: 4,
+		HashAdjustment: 2,
 	}
 	equal := reflect.DeepEqual(adjusted, target)
 	if !equal {
